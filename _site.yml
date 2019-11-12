@@ -1,11 +1,7 @@
-name: "cars"
-output_dir: "docs"
-navbar:
-  title: "Cars"
+name: "Dodentochtstudie"
+output_dir: "Dodentochtstudie"
 left:
   - text: "Dodentochtstudie"
     href: index.html
-  - text: "Speed and Distance"
-    href: speed-and-distance.html
 output:
   html_document
