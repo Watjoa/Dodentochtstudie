@@ -1,5 +1,8 @@
 ---
-title: "Speed and Distance"
+title: "index"
+author: "Joachim Waterschoot"
+date: "11/12/2019"
+output: html_document
 ---
 
 ```{r setup, include=FALSE}
