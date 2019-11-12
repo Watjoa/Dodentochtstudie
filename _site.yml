@@ -1,7 +1,7 @@
 name: "cars"
 output_dir: "docs"
 navbar:
-  title: "Dodentochtstudie"
+  title: "Cars"
 left:
   - text: "Home"
     href: index.html
