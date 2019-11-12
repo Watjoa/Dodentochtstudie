@@ -1,5 +1,5 @@
 name: "Dodentochtstudie"
-output_dir: "Dodentochtstudie"
+output_dir: "docs"
 left:
   - text: "Dodentochtstudie"
     href: index.html
