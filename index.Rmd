@@ -1,37 +1,201 @@
 ---
 title: "Dodentochtstudie"
-author: "Joachim Waterschoot"
-date: "11/12/2019"
-output: html_document
+subtitle: "De eerste resultaten"
+author: "door Joachim Waterschoot - `r format(Sys.time(), '%d %B %Y')`"
+logo: "logo_ugent_dodentocht.png"
+output:
+  epuRate::epurate:
+    toc: TRUE
+    number_sections: FALSE
 ---
+
+<style>
+/* Whole document: */
+body{
+  font-family: montserrat;
+  font-size: 11pt;
+  font-color: black;
+}
+#TOC {
+  top: 1%;
+  opacity: 0.5;
+}
+#TOC:hover {
+  opacity: 1;
+}
+</style>
+
+<script>
+   $(document).ready(function() {
+     $head = $('#header');
+     $head.prepend('<img src=\"logo_ugent_dodentocht.png\" style=\"float: right;width: 250px;\"/>')
+   });
+</script>
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+#library(epuRate)
+library(rmarkdown)
+library(dplyr)
+library(forcats)
+library(ggridges)
+library(devtools)
+library(ggthemr)
+library(foreign)
+library(psych)
+library(ggplot2)
+library(nlme) #for mixed effects models
+library(reghelper) 
+library(ggthemes)
+library(gridExtra)
+library(grid)
+library(ggplot2)
+library(lattice)
+```
+  
+<br><br>
+
+> De Dodentocht is ....
+
+
+
+# Welkom {#text-formatting}
+***
+Welkom op de resultatenpagina van de Dodentochtstudie
+
+Via deze webpagina wensen we u op de hoogte te brengen van alle voorlopige resultaten die volgen uit de Dodentochtstudie (2019). In deze eerste update wensen we u enkele descriptieven te presenteren. We laten zien wie onze deelnemers waren (1) en hoe ze gemotiveerd waren voor hun deelname aan de Dodentocht (2). Onderaan vindt u onze verdere plannen (3). Meer informatie over de studie kan u steeds terugvinden op [de onderzoekspagina](www.ugent.be/dodentocht)
+<br><br>
+
+# 1. De deelnemers {#add-caption}
+***
+<div class = "row vertical-align">
+<div class = "col-md-6">
+<br><br> In totaal namen **1383** wandelaars deel aan onze studie, waarvan 60% vrouwelijke en 40% mannelijke deelnemers. Gemiddeld hadden ze een leeftijd van **43.4** jaar, waarbij de jongste deelnemer 18 jaar was en de oudste deelnemer 77. Van alle deelnemers behaalde XX% de finish van de Dodentocht 2019.
+<br><br>
+Tijdens de Dodentocht namen 704 wandelaars deel aan de vragenlijst op post 1 (*27.3 km, Ruisbroek*), 592 wandelaars op post 2 (*53.7 km, Merchtem*), 570 wandelaars op post 3 (*72 km, Lippelo*) en 498 wandelaars op post 4 (*89.9km, Sint-Amands*).  
+Na de Dodentocht wisten nog 875 wandelaars de vragenlijst in te vullen over hun ervaring en belevingen van hun Dodentocht 2019.
+<br><br>
+Deze aantallen stellen ons in staat om een uitgebreide analyse te doen over de motivatie achter de Dodentocht zowel voor, tijdens als na de wandeltocht. Het helpt ons vragen beantwoorden **_welke doelen wandelaars zich stellen_** en **_hoe zij zichzelf gemotiveerd houden tijdens deze 100 kilometer_**. Het is maar de vraag welke rol motivatie en andere factoren spelen.
+</div>
+<div class = "col-md-6">
+<br><br> ![afbeelding](IMG_6162 (2).jpg)
+</div>
+</div>
+<br><br>
+
+# 2. Motivatie voor de deelname {#add-caption}
+***
+
+In de eerste vragenlijst, die een week voor de Dodentocht werd verstuurd, hebben we de motivatie van alle deelnemers gemeten. Dit deden we aan de hand van een vragenlijst die ruwweg vier types motivatie in kaart bracht:
+
+<div class = "row">
+<div class = "col-md-3">
+<br><br> Het eerste motivatietype beschrijft De motivatie voor **Plezier en interesse** beschrijft...
+</div>
+<div class = "col-md-3">
+<br><br> De motivatie voor **zinvolheid en nut** beschrijft...
+</div>
+<div class = "col-md-3">
+<br><br> De motivatie voor **Plicht** beschrijft...
+</div>
+<div class = "col-md-3">
+<br><br> De motivatie voor **De ander** beschrijft...
+</div>
+</div>
+<br><br>
+
+In onderstaande figuur vind je de ruwe verdeling van alle scores per motivatietype. De horizontale as laat de score zien (hoe dichter tegen 5, hoe hoger de score). De verticale as laat zien hoeveel deelnemers een bepaalde score hebben bereikt. 
+
+```{r echo=FALSE, message=FALSE, warning=FALSE, fig.align="center", fig.width=6, fig.height=6, fig.cap="Figuur: ruwe scores per motivatietype voorafgaand de Dodentocht."}
+
+
+datamotivatie <- read.spss("/Users/joachimwaterschoot/Downloads/PRE_TIJDENS_POST_doto_EM1_longmotivation.sav", 
+                  use.value.labels = FALSE, 
+                  to.data.frame=TRUE)
+
+
+
+levels(datamotivatie$Index1)[1] <- "plezier en interesse"
+levels(datamotivatie$Index1)[2] <- "anderen"
+levels(datamotivatie$Index1)[3] <- "nuttig en zinvol"
+levels(datamotivatie$Index1)[4] <- "plicht"
+
+datamotivatie$Index1 <- factor(datamotivatie$Index1, levels = c('plezier en interesse','nuttig en zinvol','plicht','anderen'))
+
+ggthemr("flat")
+
+datamotivatie %>%
+  mutate(motivation = fct_rev(as.factor(Index1))) %>%
+  ggplot(aes(y = motivation,fill=motivation)) +
+  geom_density_ridges(
+    aes(x = trans1), 
+    alpha = .9, color = "white", from = 1, to = 5,scale=0.9
+  ) +
+  labs(
+    x = "Score",
+    y = "Type motivatie",
+    title = "Motivatie voor deelname",
+    subtitle = "Ruwe verdeling per motivatietype (n = 1083)",
+    caption = "Joachim Waterschoot | Source: Universiteit Gent"
+  ) +
+  scale_y_discrete(expand = c(0.01, 0)) +
+  scale_x_continuous(expand = c(0.01, 0)) +
+  scale_fill_cyclical(
+    values = c("#2F3C4D"),
+     guide = "none"
+  ) +
+  theme(text=element_text(size=16,  family="PT Sans Narrow"))
 ```
 
-## R Markdownindexpapsa
+In deze figuur stellen we twee belangrijke zaken vast.  
 
-## Eerste resultaten
- ofnie
+  - Ten eerste waren veel wandelaars gemotiveerd omdat ze het _plezierig_ (gemiddeld 4.33/5) of _waardevol_ vinden voor zichzelf (gemiddeld 3.92/5) om deel te nemen aan de Dodentocht. Minder omdat ze het als een _persoonlijke plicht_ zien (gemiddeld 2.93/5) of omdat ze zich dienen te bewijzen tegenover _anderen_ (gemiddeld 2.02/5).  
+  - Ten tweede merken we op dat de scores voor het motivatietype _plicht_ zeer verdeeld zijn, tegenover de andere types die eerder een piek kennen. Dit wil zeggen dat veel deelnemers hun deelname zien als een persoonlijke plicht.  
+  
+<br><br>
+<br><br>
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+# 3. Onze huidige en toekomstige plannen {#add-caption}
+***
+Naast de eerste resultaten die we hierboven bondig omschreven, liggen er nog vele plannen op tafel voor **de toekomst**. We stellen ze graag aan u voor:  
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+  - Ten eerste willen we in kaart brengen wat **_de functie is van jouw type motivatie_**. Zorgt het ene type motivatie voor een andere beleving? Heb je meer kans om aan te komen indien je anders gemotiveerd bent?  
+  - Ten tweede werken we aan een tool zodat alle deelnemers van het onderzoek een **_persoonlijk motivatieprofiel_** van hun deelname kunnen krijgen. Op basis van onze analyses willen we jou kennis geven over jouw metingen tijdens deze studie en geven we tips en tricks.    
+  - Ten derde organiseren we op XX februari 2020 een infoavond waarin de organisatie en het onderzoeksteam het verloop, de resultaten en de toekomstplannen van deze studie zullen presenteren en bespreken. Inschrijven voor deze avond kan via volgende link: [Schrijf je hier in](www.ugent.be/dodentocht). Let op, plaatsen zijn beperkt.  
+<br><br>
 
-```{r cars}
-summary(cars)
-```
+Naast de eerste resultaten die we hierboven bondig omschreven, liggen er nog vele plannen op tafel voor **de toekomst**. We stellen ze graag aan u voor:  
 
-## Including Plots
+  - Ten eerste willen we in kaart brengen wat **_de functie is van jouw type motivatie_**. Zorgt het ene type motivatie voor een andere beleving? Heb je meer kans om aan te komen indien je anders gemotiveerd bent?  
+  - Ten tweede werken we aan een tool zodat alle deelnemers van het onderzoek een **_persoonlijk motivatieprofiel_** van hun deelname kunnen krijgen. Op basis van onze analyses willen we jou kennis geven over jouw metingen tijdens deze studie en geven we tips en tricks.    
+  - Ten derde organiseren we op XX februari 2020 een **_infoavond_** waarin de organisatie en het onderzoeksteam het verloop, de resultaten en de toekomstplannen van deze studie zullen presenteren en bespreken. Inschrijven voor deze avond kan via volgende link: [Schrijf je hier in](www.ugent.be/dodentocht). Let op, plaatsen zijn beperkt.  
+  
+<br><br>
+<br><br>
 
-You can also embed plots, for example:
+# 4. Meer informatie? {#add-caption}
+***
+Meer informatie kan je vinden via onderstaande contactgegevens of via de website [www.ugent.be/dodentocht](www.ugent.be/dodentocht)
 
-```{r pressure, echo=FALSE}
-plot(pressure)
-```
+<br><br>
+<br><br>
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
-<<<<<<< HEAD
-© 2019 GitHub, Inc.
-=======
->>>>>>> fbccd199ad1849714e7fefef4fae0500bee677d1
+&nbsp;
+<p style="text-align: center;">A work by <a href="www.ugent.be/dodentocht">Joachim Waterschoot</a></p>
+<p style="text-align: center;"><span style="color: #808080;"><em>Joachim.Waterschoot@ugent.be</em></span></p>
+
+<!-- Add icon library -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<!-- Add font awesome icons -->
+<p style="text-align: center;">
+    <a href="https://twitter.com/watjoa" class="fa fa-twitter"></a>
+    <a href="https://www.linkedin.com/in/watjoa/" class="fa fa-linkedin"></a>
+    <a href="https://github.com/watjoa/" class="fa fa-github"></a>
+</p>
+
+&nbsp;
+
+
+
+

@@ -1,0 +1,273 @@
+---
+title: "Dodentochtstudie"
+author: "door Joachim Waterschoot - `r format(Sys.time(), '%d %B %Y')`"
+mail: "Joachim.Waterschoot@ugent.be"
+home: "www.ugent.be/dodentocht"
+logo: "logo_ugent_dodentocht.png"
+output:
+  epuRate::epurate:
+    toc: TRUE
+    number_sections: FALSE
+---
+
+<style>
+/* Whole document: */
+body{
+  font-family: montserrat;
+  font-size: 11pt;
+  font-color: black;
+}
+#TOC {
+  top: 1%;
+  opacity: 0.5;
+}
+#TOC:hover {
+  opacity: 1;
+}
+</style>
+<script>
+   $(document).ready(function() {
+     $head = $('#header');
+     $head.prepend('<img src=\"logo_ugent_dodentocht.png\" style=\"float: right;width: 250px;\"/>')
+   });
+</script>
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+#library(epuRate)
+library(rmarkdown)
+```
+  
+<br><br>
+
+> De Dodentocht is ....
+
+
+
+# Welkom {#text-formatting}
+***
+Welkom op de resultatenpagina van de Dodentochtstudie
+
+Via deze webpagina wensen we u op de hoogte te houden van de resultaten die volgen uit de Dodentochtstudie (2019). In deze eerste update wensen we u enkele descriptieven te bezorgen: *Wie waren onze deelnemers?* en *Hoe waren ze gemotiveerd om deel te nemen aan de Dodentocht?* Als laatste wensen we u op de hoogte te brengen van de verdere plannen. 
+ [links](www.r-graph-gallery.com)
+
+Here is the code I used to make this paragraph:
+```{r, eval=FALSE}
+R markdown allows to easily format your text. You can add [links](www.r-graph-gallery.com), write in **bold** or *italic*. This is very well explained in the [Rstudio cheatsheet](https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf).
+```
+
+
+
+# Horizontal lines {#horizontal-line}
+***
+Add an horizontal line by adding 3 stars:
+```{r, eval=FALSE}
+***
+```
+
+***
+
+# Figures caption {#add-caption}
+***
+Specify the caption of your figure in the chunk header. Example:
+```{r, eval=FALSE}
+{r, fig.align="center", fig.width=6, fig.height=6, fig.cap="Figure: Here is a really important caption."}
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE, fig.align="center", fig.width=6, fig.height=6, fig.cap="Figure: Here is a really important caption."}
+library(foreign)
+library(psych)
+library(ggplot2)
+library(nlme) #for mixed effects models
+library(reghelper) 
+library(ggthemes)
+library(gridExtra)
+library(grid)
+library(ggplot2)
+library(lattice)
+
+datamotivatie <- read.spss("/Users/joachimwaterschoot/Downloads/PRE_TIJDENS_POST_doto_EM1_longmotivation.sav", 
+                  use.value.labels = FALSE, 
+                  to.data.frame=TRUE)
+
+library(dplyr)
+library(forcats)
+library(ggridges)
+library(devtools)
+library(ggthemr)
+
+levels(datamotivatie$Index1)[1] <- "plezier en interesse"
+levels(datamotivatie$Index1)[2] <- "anderen"
+levels(datamotivatie$Index1)[3] <- "nuttig en zinvol"
+levels(datamotivatie$Index1)[4] <- "plicht"
+
+datamotivatie$Index1 <- factor(datamotivatie$Index1, levels = c('plezier en interesse','nuttig en zinvol','plicht','anderen'))
+
+ggthemr("flat")
+
+datamotivatie %>%
+  mutate(motivation = fct_rev(as.factor(Index1))) %>%
+  ggplot(aes(y = motivation,fill=motivation)) +
+  geom_density_ridges(
+    aes(x = trans1), 
+    alpha = .9, color = "white", from = 1, to = 5,scale=0.9
+  ) +
+  labs(
+    x = "Score",
+    y = "Type motivatie",
+    title = "Motivatie voor deelname, vooraf",
+    subtitle = "Ruwe verdeling per motivatietype (n = 1083)",
+    caption = "Joachim Waterschoot | Source: Universiteit Gent"
+  ) +
+  scale_y_discrete(expand = c(0.01, 0)) +
+  scale_x_continuous(expand = c(0.01, 0)) +
+  scale_fill_cyclical(
+    values = c("#2F3C4D"),
+     guide = "none"
+  ) +
+  theme(text=element_text(size=16,  family="PT Sans Narrow"))
+```
+
+
+
+
+# Custom caption {#custom-caption}
+***
+Change the black default caption using CSS. Adding this code in your `style.css` file. 
+```{r, eval=FALSE}
+<style>
+p.caption {
+  font-size: 0.9em;
+  font-style: italic;
+  color: grey;
+  margin-right: 10%;
+  margin-left: 10%;  
+  text-align: justify;
+}
+</style>
+```
+
+file will give this result:
+<style>
+div.custom_caption { font-size: 0.9em; font-style: italic; color: grey; margin-right: 10%; margin-left: 10%; text-align: justify;}
+</style>
+<div class = "custom_caption">
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.align="center", fig.width=6, fig.height=6, fig.cap="Figure: Here is a really important caption, customized to be grey and in italic."}
+mpg %>%
+  ggplot( aes(x=reorder(class, hwy), y=hwy, fill=class)) + 
+    geom_boxplot() +
+    xlab("class") +
+    theme(legend.position="none")
+```
+</div>
+
+
+# Several columns {#columnsection}
+***
+
+
+<div class = "row">
+<div class = "col-md-4">
+<br><br>Since R Markdown use the [bootstrap framework](https://getbootstrap.com/docs/4.0/layout/grid/) under the hood. It is possible to benefit its powerful grid system. Basically, you can consider that your row is divided in 12 subunits of same width. You can then choose to use only a few of this subunits.
+</div>
+<div class = "col-md-4">
+<br><br>Here, I use 3 subunits of size 4 (4x3=12). The last column is used for a plot. You can read more about the grid system [here](bootstrap grid system). I got this result showing the following code in my R Markdown document.
+</div>
+<div class = "col-md-4">
+```{r, message=FALSE, echo=FALSE}
+ggplot( mtcars, aes(x=mpg)) + geom_histogram(fill="skyblue", alpha=0.5) + theme_minimal()
+```
+</div>
+</div>
+
+
+ 
+ 
+Code to get this result:
+```{r, eval=FALSE}
+<div class = "row">
+  
+<div class = "col-md-4">
+<br><br>Since R Markdown use the [bootstrap framework](https://getbootstrap.com/docs/4.0/layout/grid/) under the hood. It is possible to benefit its powerful grid system. Basically, you can consider that your row is divided in 12 subunits of same width. You can then choose to use only a few of this subunits.
+</div>
+  
+<div class = "col-md-4">
+<br><br>Here, I use 3 subunits of size 4 (4x3=12). The last column is used for a plot. You can read more about the grid system [here](bootstrap grid system). I got this result showing the following code in my R Markdown document.
+</div>
+  
+<div class = "col-md-4">
+``{r, message=FALSE, echo=FALSE}
+ggplot( mtcars, aes(x=mpg)) + geom_histogram(fill="skyblue", alpha=0.5) + theme_minimal()
+``
+</div>
+</div>
+```
+
+
+
+
+
+
+# Tabs for sub-chapters {#buttons .tabset .tabset-fade .tabset-pills}
+***
+Save space in your document using buttons or tabs for sub chapters. Result can look like this:
+
+## First
+content of sub-chapter #1
+
+<br><br>
+
+***
+
+Here is the code used to create this section:
+```{r, eval=FALSE}
+# Use buttons or tabs for sub-chapters {.tabset .tabset-fade .tabset-pills}
+***
+Save space in your document using buttons or tabs for sub chapters. Add this code at the end of your title:
+## First
+A first section
+## Second
+content of sub-chapter #2
+## Third
+content of sub-chapter #3
+```
+
+
+Note that I've also custom the buttons using this CSS:
+```{r, eval=FALSE}
+.btn {
+    border-width: 0 0px 0px 0px;
+    font-weight: normal;
+    text-transform: ;
+}
+.btn-default {
+    color: #2ecc71;
+    background-color: #ffffff;
+    border-color: #ffffff;
+}
+```
+
+## Second
+content of sub-chapter #2
+
+## Third
+content of sub-chapter #3
+
+
+&nbsp;
+<hr />
+<p style="text-align: center;">A work by <a href="www.ugent.be/dodentocht">Joachim Waterschoot</a></p>
+<p style="text-align: center;"><span style="color: #808080;"><em>Joachim.Waterschoot@ugent.be</em></span></p>
+
+<!-- Add icon library -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<!-- Add font awesome icons -->
+<p style="text-align: center;">
+    <a href="https://twitter.com/watjoa" class="fa fa-twitter"></a>
+    <a href="https://www.linkedin.com/in/watjoa/" class="fa fa-linkedin"></a>
+    <a href="https://github.com/watjoa/" class="fa fa-github"></a>
+</p>
+
+&nbsp;
+
