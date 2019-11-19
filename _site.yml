@@ -4,5 +4,4 @@ left:
   - text: "Dodentochtstudie"
     href: index.html
 output:
-  rmarkdown::html_document:
-    theme: cosmo
+  html_document
