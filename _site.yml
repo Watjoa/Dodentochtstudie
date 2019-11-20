@@ -4,4 +4,6 @@ left:
   - text: "Dodentochtstudie"
     href: index.html
 output:
-  html_document
+  html_document:
+    theme: united
+    highlight: tango
