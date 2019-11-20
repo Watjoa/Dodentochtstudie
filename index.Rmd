@@ -22,7 +22,7 @@ div.blue { background-color:#eaeded; border-radius: 5px; padding: 20px;}
 <script>
    $(document).ready(function() {
      $head = $('#header');
-     $head.prepend('<img src=\"logo_ugent_dodentocht.png\" style=\"float: right;width: 250px;\"/>')
+     $head.prepend('<img src=\"logo_ugent_dodentocht.png\" style=\"float: right;width: 300px;\"/>')
    });
 </script>
 
@@ -49,10 +49,9 @@ library(circlize)
 library(plotrix)
 ```
 
-> "De grootheid van een mens is niet te meten aan zijn verwezelijkingen, maar aan zijn aspiraties..."
+> "De grootheid van een mens is niet te meten aan zijn verwezelijkingen, maar aan zijn aspiraties..."  
 - *Een wandelaar na zijn opgave in 1981*.
 
-<br><br>
 
 # Welkom
 ***
@@ -102,7 +101,7 @@ geom_area(aes(fill = Geslacht), color = "white",
   labs(
     x = "Leeftijd",
     y = "Hoeveelheid deelnemers",
-    title = "Leeftijd per geslacht",
+    title = "Leeftijd van deelnemers per geslacht",
     subtitle = "N = 1383",
     caption = "Bron: Dodentochtstudie, Universiteit Gent"
   )+
@@ -135,20 +134,20 @@ ggplot(table) +
     aes(x = post, y = value, fill = Deelnemers, group = Deelnemers),
     stat='identity', position = 'dodge'
   ) +
-  geom_text(size=3,
+  geom_text(size=6,
     aes(x = post, y = value, label = hoeveelheid, group = Deelnemers),
     position = position_dodge(width = 1),
-    vjust = -0.5, size = 2
+    vjust = -0.5, size = 10
   ) +
    labs(
     x = "Post",
     y = "Percentage deelnemers",
-    title = "Vergelijking aantal wandelaars",
+    title = "Vergelijking aantal deelnemers en wandelaars",
     subtitle=" ",
     caption = "Bron: Dodentochtstudie, Universiteit Gent"
   )+
   theme_classic()+
-  coord_cartesian(ylim=c(75,100))+
+  coord_cartesian(ylim=c(75,103))+
   theme(plot.caption = element_text(color = "black", size = 13),text=element_text(size=20,  family="PT Sans Narrow"),legend.position="top")
 
 ```
@@ -160,15 +159,16 @@ Na de Dodentocht wisten nog 875 wandelaars de vragenlijst in te vullen over hun 
 
 <br><br>
 
-# 2. Motivatie voor de deelname
+# 2. Motivatie
 ***
 
 ## Doelen van wandelaars
 In de eerste vragenlijst, die een week voor de Dodentocht werd ingevuld, vroegen we aan deelnemers **welke doelen** ze zich stelden voor hun deelname aan de Dodentocht. Voorbeelden hiervan zijn:
 
-## Types motivatie
+## Types motivatie voor deelname
 
-In deze eerste vragenlijst werden **vier types motivatie** gemeten. Deze worden hieronder bondig omschreven, voorafgegaan door een grafiek die aantoont *hoeveel mensen (verticale as) een bepaalde score op dit motivatietype behaalde (horizontale as)*:
+In deze eerste vragenlijst werden **vier types motivatie** gemeten.  
+Deze worden hieronder bondig omschreven, voorafgegaan door een grafiek die aantoont *hoeveel mensen (verticale as) een bepaalde score op dit motivatietype behaalde (horizontale as)*:
 <br><br>
 *"Ik ben gemotiveerd..."*
 <div class = "row">
@@ -281,7 +281,7 @@ In deze eerste vragenlijst werden **vier types motivatie** gemeten. Deze worden 
 </div>
 <br><br>
 <div class = "blue">
-$\rightarrow$ **Bevindingen:**
+**Bevindingen:**
 
   - Een vergelijking tussen de vier bovenstaande grafieken laat zien dat vele wandelaars vooral deelnamen omdat ze het **_plezierig_** vinden deel te nemen aan de Dodentocht en omdat ze hun deelname als waardevol en **_zinvol_** zien. Beide grafieken hebben een piek meer naar rechts of naar hogere scores.   
   
@@ -356,7 +356,7 @@ Hieronder vindt u vier bevindingen die enkele relaties blootleggen tussen de soo
 ```
 
 <div class = "blue">
-$\rightarrow$ **Bevinding:** Hoe meer wandelaars deelnamen omdat ze het boeiend en leuk vonden om deel te nemen aan de Dodentocht, hoe meer 'flow' ze achteraf aangaven te hebben ervaren.
+**Bevinding:** Hoe meer wandelaars deelnamen omdat ze het boeiend en leuk vonden om deel te nemen aan de Dodentocht, hoe meer 'flow' ze achteraf aangaven te hebben ervaren.
 </div>
 </div>
 <div class = "col-md-12">
@@ -421,7 +421,7 @@ $\rightarrow$ **Bevinding:** Hoe meer wandelaars deelnamen omdat ze het boeiend 
 ```
 
 <div class = "blue">
-$\rightarrow$ **Bevinding:** Hoe meer wandelaars deelnamen omdat ze hun deelname zinvol en persoonlijk belangrijk vonden, hoe meer ze hun deelname achteraf als waardevol, fantastisch en leerrijk zagen.
+**Bevinding:** Hoe meer wandelaars deelnamen omdat ze hun deelname zinvol en persoonlijk belangrijk vonden, hoe meer ze hun deelname achteraf als waardevol, fantastisch en leerrijk zagen.
 </div>.
 </div>
 <div class = "col-md-12">
@@ -484,7 +484,7 @@ $\rightarrow$ **Bevinding:** Hoe meer wandelaars deelnamen omdat ze hun deelname
     ```
 
 <div class = "blue">
-$\rightarrow$ **Bevinding:** Hoe meer wandelaars deelnamen omdat ze het als hun plicht zagen om deel te nemen, hoe meer ze rapporteerden nerveus te zijn voor hun deelname.
+**Bevinding:** Hoe meer wandelaars deelnamen omdat ze het als hun plicht zagen om deel te nemen, hoe meer ze rapporteerden nerveus te zijn voor hun deelname.
 </div>.
 </div>
 <div class = "col-md-12">
@@ -549,9 +549,8 @@ $\rightarrow$ **Bevinding:** Hoe meer wandelaars deelnamen omdat ze het als hun 
     ```
 
 <div class = "blue">
-$\rightarrow$ **Bevinding:** Hoe meer wandelaars deelnamen omdat ze zich dienden te bewijzen tegenover anderen, hoe meer pijn en fysieke last ze achteraf aangaven te hebben ervaren.
+**Bevinding:** Hoe meer wandelaars deelnamen omdat ze zich dienden te bewijzen tegenover anderen, hoe meer pijn en fysieke last ze achteraf aangaven te hebben ervaren.
 </div>.
-<br><br>
 </div>
 </div> 
 
