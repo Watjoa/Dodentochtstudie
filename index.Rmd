@@ -12,7 +12,7 @@ output:
 <style>
 /* Whole document: */
 body{
-  font-family: montserrat;
+  font-family: Helvetica;
   font-size: 12pt;
   font-color: black;
 }
