@@ -92,7 +92,7 @@ colnames(df) <- c('Geslacht','Leeftijd','Hoeveelheid')
 df$Geslacht <- as.factor(df$Geslacht)
 df[which(df$Geslacht=="2"),'Geslacht'] <- "1"
 df$Geslacht <- droplevels(df$Geslacht)
-levels(df$Geslacht) <- c('vrouwen 40%','mannen 60%')
+levels(df$Geslacht) <- c('mannen 60%','vrouwen 40%')
 
 ggthemr("flat")
 library(ggpubr)
@@ -118,43 +118,38 @@ Gemiddeld hadden deelnemers een leeftijd van **43.4** jaar, gaande van 18 tot 77
 <div class = "col-md-6">
 ```{r echo=FALSE, message=FALSE, warning=FALSE,fig.height=7}
 
-value <- as.numeric(c(100.0, 100.0,        97.7, 98.3,     85, 87.9,     80.3, 83.8,   78.6,82.4))
-hoeveelheid <- c(12675, 1383,  12387, 1360,   10775, 1215,     10179, 1159,  9960, 1139      )
-Deelnemers <- c('Dodentocht','Onderzoek','Dodentocht','Onderzoek','Dodentocht','Onderzoek','Dodentocht','Onderzoek','Dodentocht','Onderzoek')
-post <- c('Start','Start','Post 1, 27.3 km','Post 1, 27.3 km', 'Post 2, 53.7 km', 'Post 2, 53.7 km','Post 3, 72 km','Post 3, 72 km','Post 4, 89.9 km','Post 4, 89.9 km')
-table <- cbind(value, hoeveelheid, Deelnemers, post)
+value <- c("100 %",  "98.3 %",  "87.9 %",   "83.8 %",  "82.4 %")
+hoeveelheid <- as.numeric(c( 1383,   1360,    1215,     1159,   1139      ))
+post <- c('Start','Post 1, 27.3 km',  'Post 2, 53.7 km','Post 3, 72 km','Post 4, 89.9 km')
+table <- cbind(value, hoeveelheid, post)
 table <- as.data.frame(table)
 table$value <- as.character(table$value)
-table$value <- as.numeric(table$value)
-table$Deelnemers <- as.factor(table$Deelnemers)
-table$hoeveelheid <- as.character(table$hoeveelheid)
 table$post <- factor(table$post, levels=c('Start','Post 1, 27.3 km','Post 2, 53.7 km','Post 3, 72 km','Post 4, 89.9 km'))
 
 ggplot(table) +
   geom_bar(
-    aes(x = post, y = value, fill = Deelnemers, group = Deelnemers),
-    stat='identity', position = 'dodge'
+    aes(x = post, y = hoeveelheid),
+    stat='identity', position = 'dodge',fill = "#2F3C4D"
   ) +
   geom_text(size=6,
-    aes(x = post, y = value, label = hoeveelheid, group = Deelnemers),
+    aes(x = post, y = hoeveelheid, label = value),
     position = position_dodge(width = 1),
     vjust = -0.5, size = 10
   ) +
    labs(
     x = "Post",
-    y = "Percentage deelnemers",
-    title = "Vergelijking aantal deelnemers en wandelaars",
+    y = "Aantal deelnemers",
+    title = "Aantal wandelende deelnemers per post",
     subtitle=" ",
     caption = "Bron: Dodentochtstudie, Universiteit Gent"
   )+
   theme_classic()+
-  coord_cartesian(ylim=c(75,103))+
   theme(plot.caption = element_text(color = "black", size = 13),text=element_text(size=20,  family="PT Sans Narrow"),legend.position="top")
 
 ```
 
-Het percentage wandelaars dat deelnam aan ons onderzoek is **vergelijkbaar** met het totaal aantal wandelaars dat deelnam aan de Dodentocht.
-Na de Dodentocht wisten nog 875 wandelaars de vragenlijst in te vullen over hun ervaring en belevingen van hun Dodentocht 2019.
+Bovenstaande grafiek laat u het aantal wandelaars zien dat deelnam aan het onderzoek tijdens de Dodentocht 2019.  
+Na de Dodentocht wisten nog 875 wandelaars de vragenlijst in te vullen over hun ervaring en belevingen van hun Dodentocht
 </div> 
 </div> 
 
@@ -166,14 +161,42 @@ Na de Dodentocht wisten nog 875 wandelaars de vragenlijst in te vullen over hun 
 ## Doelen van wandelaars
 In de eerste vragenlijst, die een week voor de Dodentocht werd ingevuld, vroegen we aan deelnemers **welke doelen** ze zich stelden voor hun deelname aan de Dodentocht. Voorbeelden hiervan zijn:
 
+<div class = "row">
+<div class = "col-md-4">
+<br><br>
+**Doelen 1**
+![Caption for the picture.](logo_ugent_dodentocht.png)
+</div>
+<div class = "col-md-4">
+<br><br>
+**Doelen 1**
+![Caption for the picture.](logo_ugent_dodentocht.png)
+</div>
+<div class = "col-md-4">
+<br><br>
+**Doelen 1**
+![Caption for the picture.](logo_ugent_dodentocht.png)
+</div>
+</div> 
+<br><br>
+<br><br>
+
 ## Types motivatie voor deelname
 
-In deze eerste vragenlijst werden **vier types motivatie** gemeten.  
+In deze eerste vragenlijst werden **vijf types motivatie** gemeten.  
 Deze worden hieronder bondig omschreven, voorafgegaan door een grafiek die aantoont *hoeveel mensen (verticale as) een bepaalde score op dit motivatietype behaalde (horizontale as)*:
 <br><br>
-*"Ik ben gemotiveerd..."*
+<center>
+*"Ik ben gemotiveerd om mijn opgestelde doelen na te streven..."*
+</center>
 <div class = "row">
-<div class = "col-md-3">
+<div class = "col-md-2">
+<br><br>
+```{r echo=FALSE, message=FALSE, warning=FALSE, fig.align="center", fig.width=6, fig.height=7}
+  
+```
+</div>
+<div class = "col-md-4">
 <br><br>
 
 ```{r echo=FALSE, message=FALSE, warning=FALSE, fig.align="center", fig.width=6, fig.height=7}
@@ -189,17 +212,17 @@ Deze worden hieronder bondig omschreven, voorafgegaan door een grafiek die aanto
         x = "Score",
         y = "Hoeveelheid deelnemers",
         title = "Plezier en interesse",
-        subtitle = " ",
+        subtitle = "Gemiddelde: 4.33/5",
         caption = "Bron: Dodentochtstudie, Universiteit Gent"
       )+coord_cartesian(ylim=c(0,1200))+
       theme_classic()+
       theme(plot.caption = element_text(color = "black", size = 15),text=element_text(size=30,  family="PT Sans Narrow"))
     ```
 
-*"... omdat ik mijn deelname leuk, plezierig en interessant vind."*
+*"... omdat ik dat leuk, plezierig en interessant vind."*
 
 </div>
-<div class = "col-md-3">
+<div class = "col-md-4">
 <br><br>
 
 ```{r echo=FALSE, message=FALSE, warning=FALSE, fig.align="center", fig.width=6, fig.height=7}
@@ -216,17 +239,26 @@ Deze worden hieronder bondig omschreven, voorafgegaan door een grafiek die aanto
         x = "Score",
         y = "Hoeveelheid deelnemers",
         title = "Nut en zinvolheid",
-        subtitle = " ",
+        subtitle = "Gemiddelde: 3.92/5",
         caption = "Bron: Dodentochtstudie, Universiteit Gent"
       )+coord_cartesian(ylim=c(0,1200))+
       theme_classic()+
       theme(plot.caption = element_text(color = "black", size = 15),text=element_text(size=30,  family="PT Sans Narrow"))
 ```
 
-*"... omdat ik mijn deelname als iets persoonlijks belangrijk, waardevol en zinvol vind."*
+*"... omdat ik dat als iets persoonlijks belangrijk, waardevol en zinvol vind."*
 
 </div>
-<div class = "col-md-3">
+<div class = "col-md-2">
+<br><br>
+```{r echo=FALSE, message=FALSE, warning=FALSE, fig.align="center", fig.width=6, fig.height=7}
+  
+```
+</div>
+</div>
+
+<div class = "row">
+<div class = "col-md-4">
 <br><br>
 
 ```{r echo=FALSE, message=FALSE, warning=FALSE, fig.align="center", fig.width=6, fig.height=7}
@@ -243,17 +275,17 @@ Deze worden hieronder bondig omschreven, voorafgegaan door een grafiek die aanto
         x = "Score",
         y = "Hoeveelheid deelnemers",
         title = "Plicht",
-        subtitle = " ",
+        subtitle = "Gemiddelde: 2.93/5",
         caption = "Bron: Dodentochtstudie, Universiteit Gent"
       )+coord_cartesian(ylim=c(0,1200))+
       theme_classic()+
       theme(plot.caption = element_text(color = "black", size = 15),text=element_text(size=30,  family="PT Sans Narrow"))
     ```
 
-*"... omdat ik mijn deelname als een persoonlijke plicht zie en ik me anders slecht, schuldig of beschaamd zou voelen indien ik het niet zou doen."*
+*"... omdat ik dat als een persoonlijke plicht zie en ik me anders slecht, schuldig of beschaamd zou voelen indien ik het niet zou doen."*
 
 </div>
-<div class = "col-md-3">
+<div class = "col-md-4">
 <br><br>
 
 ```{r echo=FALSE, message=FALSE, warning=FALSE, fig.align="center", fig.width=6, fig.height=7}
@@ -270,13 +302,39 @@ Deze worden hieronder bondig omschreven, voorafgegaan door een grafiek die aanto
         x = "Score",
         y = "Hoeveelheid deelnemers",
         title = "De ander",
-        subtitle = " ",
+        subtitle = "Gemiddelde: 2.02/5",
         caption = "Bron: Dodentochtstudie, Universiteit Gent"
       )+coord_cartesian(ylim=c(0,1200))+
       theme_classic()+
       theme(plot.caption = element_text(color = "black", size = 15),text=element_text(size=30,  family="PT Sans Narrow"))
     ```
-*"... omdat ik mezelf dien te bewijzen tegenover anderen. Het wordt van mij verwacht dat ik dit doe."*
+*"... omdat anderen dat van mij verwachten dat ik dat doe."*
+
+</div>
+<div class = "col-md-4">
+<br><br>
+
+```{r echo=FALSE, message=FALSE, warning=FALSE, fig.align="center", fig.width=6, fig.height=7}
+
+    data <- read.spss("/Users/joachimwaterschoot/Downloads/PRE_TIJDENS_POST_doto_EM1.sav",
+                      use.value.labels = FALSE,
+                      to.data.frame=TRUE)
+    ggthemr("flat")
+    library(ggpubr)
+    ggplot(data,aes(amot))+
+      geom_density(aes(y=..count..),colour='#2F3C4D',fill='#2F3C4D')+
+      labs(
+        x = "Score",
+        y = "Hoeveelheid deelnemers",
+        title = "Geen motivatie",
+        subtitle = "Gemiddelde: 2.13/5",
+        caption = "Bron: Dodentochtstudie, Universiteit Gent"
+      )+coord_cartesian(ylim=c(0,1200))+
+      theme_classic()+
+      theme(plot.caption = element_text(color = "black", size = 15),text=element_text(size=30,  family="PT Sans Narrow"))
+    ```
+
+*"... omdat ik het eigenlijk niet weet. Ik heb geen idee waarom ik dit doel nastreef."*
 
 </div>
 </div>
@@ -284,276 +342,329 @@ Deze worden hieronder bondig omschreven, voorafgegaan door een grafiek die aanto
 <div class = "blue">
 **Bevindingen:**
 
-  - Een vergelijking tussen de vier bovenstaande grafieken laat zien dat vele wandelaars vooral deelnamen omdat ze het **_plezierig_** vinden deel te nemen aan de Dodentocht en omdat ze hun deelname als waardevol en **_zinvol_** zien. Beide grafieken hebben een piek meer naar rechts of naar hogere scores.   
+  - Een vergelijking tussen de vier bovenstaande grafieken laat zien dat vele wandelaars het nastreven van hun opgestelde doelen **_plezierig_** vinden en omdat ze dit waardevol en **_zinvol_** vinden.   
   
-  - Weinig wandelaars zien hun deelname als een verplichting om zich te bewijzen tegenover **_de ander_**. Deze grafiek heeft een piek meer naar links of naar lagere scores.  
-    
-  - De derde grafiek toont aan dat de scores voor het motivatietype 'Plicht' verdeeld zijn. Dit wil zeggen dat redelijk veel wandelaars hun deelname als **_een persoonlijke plicht_** zien, dit om zich te bewijzen tegenover zichzelf met negatieve gevolgen bij een mislukking. Deze grafiek heeft geen piek en is vrij verdeeld over alle scores.
+  - Minder zien wandelaars het nastreven van hun doelen als een **_persoonlijke plicht_**. Nog minder streven wandelaars hun doelen na om het door **_anderen_** wordt verwacht of weten ze eigenlijk helemaal niet waarom ze dit doel nastreven.  
+  Wel is het opvallend om te zien dat deze gemiddelden schommelen rond de 2-3/5, terwijl het doelen zijn die wandelaars zelf kozen voorafgaand de Dodentocht.  
 
 </div>
 <br><br>
 
 
-## Wat doet mijn motivatie?
+## Waarmee hangt motivatie samen?
 
-Hieronder vindt u vier bevindingen die enkele relaties blootleggen tussen de soort motivatie om deel te nemen en enkele metingen die voor en na de Dodentocht zijn afgenomen.
+Hieronder vindt u enkele bevindingen over de relatie tussen de soort motivatie om je doelen na te streven en enkele metingen die voor, tijdens en na de Dodentocht zijn afgenomen.
 <br><br>
 <div class = "row">
-<div class = "col-md-12">
-
-**1. 'Flow' of 'opgaan in het wandelen'**
-```{r echo=FALSE, message=FALSE, warning=FALSE, fig.align="center", fig.height=6}
-    corr_eqn <- function(x,y, digits = 2) {
-      corr_coef <- round(cor(x, y, use="complete.obs"), digits = digits)
-      paste("italic(r) == ", corr_coef)
-    }
-
-    # Provide a scatter plot for income and health deprivation
-    data$extern_mot <- (data$ext_app_mot + data$ext_avoi_mot)/2
-    dataintrinmot <- data
-
-
-    outlierKD <- function(dt, var) {
-      var_name <- eval(substitute(var),eval(dt))
-      tot <- sum(!is.na(var_name))
-      na1 <- sum(is.na(var_name))
-      m1 <- mean(var_name, na.rm = T)
-
-      outlier <- boxplot.stats(var_name)$out
-      mo <- mean(outlier)
-      var_name <- ifelse(var_name %in% outlier, NA, var_name)
-
-
-      na2 <- sum(is.na(var_name))
-      m2 <- mean(var_name, na.rm = T)
-
-      dt[as.character(substitute(var))] <- invisible(var_name)
-      assign(as.character(as.list(match.call())$dt), dt, envir = .GlobalEnv)
-      message("Outliers successfully removed", "\n")
-      return(invisible(dt))
-
-    }
-
-    outlierKD(dataintrinmot, intrin_mot)
-
-    labels = data.frame(x = 3.25, y = 2.5, label = corr_eqn(dataintrinmot$intrin_mot, dataintrinmot$post_flow_total))
-
-    ggplot(dataintrinmot, aes(x = intrin_mot, y = post_flow_total)) +
-      geom_point(shape = 19, size = 2, aes(colour = intrin_mot)) +
-      scale_color_gradient(low="white", high="#2F3C4D")+
-      geom_smooth(colour = "#2F3C4D", fill = "#2F3C4D", method = 'lm') +
-      labs(
-        x = "Plezier en interesse",
-        y = "Flow",
-        caption = "Bron: Dodentochtstudie, Universiteit Gent",
-        colour=' '
-      )+geom_text(data = labels, aes(x = x, y = y,
-                                     label = label), parse = TRUE)+
-      theme_classic()+
-      theme(plot.caption = element_text(color = "black", size = 12),text=element_text(size=18,  family="PT Sans Narrow"),legend.position="bottom")
-
-
-
-```
+<div class = "col-md-4">
+<center>
+**VOOR**
+</center>
+![ ](voordoto.jpg)
 
 <div class = "blue">
-**Bevinding:** Hoe meer wandelaars deelnamen omdat ze het boeiend en leuk vonden om deel te nemen aan de Dodentocht, hoe meer 'flow' ze achteraf aangaven te hebben ervaren.
+**Bevinding:**  
+
+Wanneer wandelaars aangaven dat ze hun doelen nastreefden omdat ze het zien als een persoonlijke plicht bleek samen te hangen met hoe **_nerveus_** ze waren voor de tocht.  
+(*r = .28*)* 
 </div>
+    
+    
+  $*$ *r* verwijst naar de correlatie of samenhang tussen de twee metingen [(klik hier voor meer informatie)](https://mod-est.tbm.tudelft.nl/wiki/index.php/Correlatie).
 </div>
-<div class = "col-md-12">
-<br><br>
-
-**2. Een waardevolle en leerrijke wandeling**
-```{r echo=FALSE, message=FALSE, warning=FALSE, fig.align="center", fig.height=6}
-
-    corr_eqn <- function(x,y, digits = 2) {
-      corr_coef <- round(cor(x, y, use="complete.obs"), digits = digits)
-      paste("italic(r) == ", corr_coef)
-    }
-
-    # Provide a scatter plot for income and health deprivation
-    data$ident_mot <- (data$ident_app_mot + data$ident_avoi_mot)/2
-    dataintrinmot <- data
-    dataintrinmot <- dataintrinmot[-c(which(dataintrinmot$post_fantastisc > 5)), ]
-
-
-
-    outlierKD <- function(dt, var) {
-      var_name <- eval(substitute(var),eval(dt))
-      tot <- sum(!is.na(var_name))
-      na1 <- sum(is.na(var_name))
-      m1 <- mean(var_name, na.rm = T)
-
-      outlier <- boxplot.stats(var_name)$out
-      mo <- mean(outlier)
-      var_name <- ifelse(var_name %in% outlier, NA, var_name)
-
-
-      na2 <- sum(is.na(var_name))
-      m2 <- mean(var_name, na.rm = T)
-
-      dt[as.character(substitute(var))] <- invisible(var_name)
-      assign(as.character(as.list(match.call())$dt), dt, envir = .GlobalEnv)
-      message("Outliers successfully removed", "\n")
-      return(invisible(dt))
-
-    }
-
-    outlierKD(dataintrinmot, ident_mot)
-
-    labels = data.frame(x = 3, y = 1.5, label = corr_eqn(dataintrinmot$ident_mot, dataintrinmot$post_fantastisc))
-
-    ggplot(dataintrinmot, aes(x = ident_mot, y = post_fantastisc)) +
-      geom_point(shape = 19, size = 2, aes(colour = ident_mot)) +
-      scale_color_gradient(low="white", high="#2F3C4D")+
-      geom_smooth(colour = "#2F3C4D", fill = "#2F3C4D", method = 'lm') +
-      labs(
-        x = "Zinvolheid en nut",
-        y = "Waardevol en leerrijk",
-        caption = "Bron: Dodentochtstudie, Universiteit Gent",
-        colour=' '
-      )+geom_text(data = labels, aes(x = x, y = y,
-                                     label = label), parse = TRUE)+
-      theme_classic()+
-      theme(plot.caption = element_text(color = "black", size = 12),text=element_text(size=18,  family="PT Sans Narrow"),legend.position="bottom")
-
-
-
-```
+<div class = "col-md-4">
+<center>
+**TIJDENS**
+</center>
+![ ](tijdensdoto.jpg)
 
 <div class = "blue">
-**Bevinding:** Hoe meer wandelaars deelnamen omdat ze hun deelname zinvol en persoonlijk belangrijk vonden, hoe meer ze hun deelname achteraf als waardevol, fantastisch en leerrijk zagen.
-</div>.
+**Bevinding:**  
+
+Wandelaars die aangaven ze hun doelen nastreefden omdat ze het boeiend en leuk vinden om dat te doen gaven meer aan **_'flow'_** te hebben ervaern tijdens de tocht. Ze gingen helemaal op in het wandelen.  
+(*r = .31*)  
+
+Wandelaars die aangaven hun doelen na te streven omdat anderen dit van hen verwachtten rapporeerten meer **_pijn_** tijdens de tocht.  
+(*r = .16*)   
 </div>
-<div class = "col-md-12">
-<br><br>
 
-**3. Nervositeit voor de tocht**
-```{r echo=FALSE, message=FALSE, warning=FALSE, fig.align="center", fig.height=6}
-
-    corr_eqn <- function(x,y, digits = 2) {
-      corr_coef <- round(cor(x, y, use="na.or.complete"), digits = digits)
-      paste("italic(r) == ", corr_coef)
-    }
-
-    # Provide a scatter plot for income and health deprivation
-    data$introj_mot <- (data$introj_app_mot + data$introj_avoi_mot)/2
-    dataintrinmot <- data
-
-
-    outlierKD <- function(dt, var) {
-      var_name <- eval(substitute(var),eval(dt))
-      tot <- sum(!is.na(var_name))
-      na1 <- sum(is.na(var_name))
-      m1 <- mean(var_name, na.rm = T)
-
-      outlier <- boxplot.stats(var_name)$out
-      mo <- mean(outlier)
-      var_name <- ifelse(var_name %in% outlier, NA, var_name)
-
-
-      na2 <- sum(is.na(var_name))
-      m2 <- mean(var_name, na.rm = T)
-
-      dt[as.character(substitute(var))] <- invisible(var_name)
-      assign(as.character(as.list(match.call())$dt), dt, envir = .GlobalEnv)
-      message("Outliers successfully removed", "\n")
-      return(invisible(dt))
-
-    }
-
-    outlierKD(dataintrinmot, introj_mot)
-
-    labels = data.frame(x = 1.5, y = 1.5, label = corr_eqn(dataintrinmot$introj_mot, dataintrinmot$nervous))
-
-    ggplot(dataintrinmot, aes(x = introj_mot, y = nervous)) +
-      geom_point(shape = 19, size = 2, aes(colour = introj_mot)) +
-      scale_color_gradient(low="white", high="#2F3C4D")+
-      geom_smooth(colour = "#2F3C4D", fill = "#2F3C4D", method = 'lm') +
-      labs(
-        x = "Plicht",
-        y = "Nervositeit",
-        caption = "Bron: Dodentochtstudie, Universiteit Gent",
-        colour=' '
-      )+geom_text(data = labels, aes(x = x, y = y,
-                                     label = label), parse = TRUE)+
-      theme_classic()+
-      theme(plot.caption = element_text(color = "black", size = 12),text=element_text(size=18,  family="PT Sans Narrow"),legend.position="bottom")
-
-
-
-    ```
+</div>
+<div class = "col-md-4">
+<center>
+**NA**
+</center>
+![ ](nadoto.jpg)
 
 <div class = "blue">
-**Bevinding:** Hoe meer wandelaars deelnamen omdat ze het als hun plicht zagen om deel te nemen, hoe meer ze rapporteerden nerveus te zijn voor hun deelname.
-</div>.
+**Bevinding:**  
+
+Wandelaars die op voorhand aangaven hun doelen na te streefdenen omdat ze dit persoonlijk zinvol vonden, ervoeren de Dodentocht achteraf **_positiever_**. Ze gaven aan dat het een boeiende, leerrijke en waardevolle tocht was.  
+(*r = .32*)  
+
+Wandelaars die op voorhand aangaven niet te weten waarom ze hun doelen nastreefden gaven aan minder geneigd te zijn zich in te schrijven voor de **_Dodentocht 2020_**.  
+(*r = -.13*)   
+  
 </div>
-<div class = "col-md-12">
-<br><br>
 
-**4. Ervaren pijn tijdens de tocht**
-```{r echo=FALSE, message=FALSE, warning=FALSE, fig.align="center",fig.height=6}
-
-    corr_eqn <- function(x,y, digits = 2) {
-      corr_coef <- round(cor(x, y, use="complete.obs"), digits = digits)
-      paste("italic(r) == ", corr_coef)
-    }
-
-    # Provide a scatter plot for income and health deprivation
-    data$extern_mot <- (data$ext_app_mot + data$ext_avoi_mot)/2
-    dataintrinmot <- data
-    dataintrinmot <- dataintrinmot[-c(which(dataintrinmot$post_physicalpain < 1)), ]
-
-
-
-    outlierKD <- function(dt, var) {
-      var_name <- eval(substitute(var),eval(dt))
-      tot <- sum(!is.na(var_name))
-      na1 <- sum(is.na(var_name))
-      m1 <- mean(var_name, na.rm = T)
-
-      outlier <- boxplot.stats(var_name)$out
-      mo <- mean(outlier)
-      var_name <- ifelse(var_name %in% outlier, NA, var_name)
-
-
-      na2 <- sum(is.na(var_name))
-      m2 <- mean(var_name, na.rm = T)
-
-      dt[as.character(substitute(var))] <- invisible(var_name)
-      assign(as.character(as.list(match.call())$dt), dt, envir = .GlobalEnv)
-      message("Outliers successfully removed", "\n")
-      return(invisible(dt))
-
-    }
-
-    outlierKD(dataintrinmot, extern_mot)
-
-    labels = data.frame(x = 1, y = 1.5, label = corr_eqn(dataintrinmot$extern_mot, dataintrinmot$post_physicalpain))
-
-    ggplot(dataintrinmot, aes(x = extern_mot, y = post_physicalpain)) +
-      geom_point(shape = 19, size = 2, aes(colour = extern_mot)) +
-      scale_color_gradient(low="white", high="#2F3C4D")+
-      geom_smooth(colour = "#2F3C4D", fill = "#2F3C4D", method = 'lm') +
-      labs(
-        x = "De ander",
-        y = "Fysieke pijn",
-        caption = "Bron: Dodentochtstudie, Universiteit Gent",
-        colour=' '
-      )+geom_text(data = labels, aes(x = x, y = y,
-                                     label = label), parse = TRUE)+
-      theme_classic()+
-      theme(plot.caption = element_text(color = "black", size = 12), text=element_text(size=18,  family="PT Sans Narrow"),legend.position="bottom")
-
-
-
-    ```
-
-<div class = "blue">
-**Bevinding:** Hoe meer wandelaars deelnamen omdat ze zich dienden te bewijzen tegenover anderen, hoe meer pijn en fysieke last ze achteraf aangaven te hebben ervaren.
-</div>.
 </div>
-</div> 
+</div>
+
+
+
+
+<!-- **1. 'Flow' of 'opgaan in het wandelen'** -->
+<!-- ```{r echo=FALSE, message=FALSE, warning=FALSE, fig.align="center", fig.height=6} -->
+<!--     corr_eqn <- function(x,y, digits = 2) { -->
+<!--       corr_coef <- round(cor(x, y, use="complete.obs"), digits = digits) -->
+<!--       paste("italic(r) == ", corr_coef) -->
+<!--     } -->
+
+<!--     # Provide a scatter plot for income and health deprivation -->
+<!--     data$extern_mot <- (data$ext_app_mot + data$ext_avoi_mot)/2 -->
+<!--     dataintrinmot <- data -->
+
+
+<!--     outlierKD <- function(dt, var) { -->
+<!--       var_name <- eval(substitute(var),eval(dt)) -->
+<!--       tot <- sum(!is.na(var_name)) -->
+<!--       na1 <- sum(is.na(var_name)) -->
+<!--       m1 <- mean(var_name, na.rm = T) -->
+
+<!--       outlier <- boxplot.stats(var_name)$out -->
+<!--       mo <- mean(outlier) -->
+<!--       var_name <- ifelse(var_name %in% outlier, NA, var_name) -->
+
+
+<!--       na2 <- sum(is.na(var_name)) -->
+<!--       m2 <- mean(var_name, na.rm = T) -->
+
+<!--       dt[as.character(substitute(var))] <- invisible(var_name) -->
+<!--       assign(as.character(as.list(match.call())$dt), dt, envir = .GlobalEnv) -->
+<!--       message("Outliers successfully removed", "\n") -->
+<!--       return(invisible(dt)) -->
+
+<!--     } -->
+
+<!--     outlierKD(dataintrinmot, intrin_mot) -->
+
+<!--     labels = data.frame(x = 3.25, y = 2.5, label = corr_eqn(dataintrinmot$intrin_mot, dataintrinmot$post_flow_total)) -->
+
+<!--     ggplot(dataintrinmot, aes(x = intrin_mot, y = post_flow_total)) + -->
+<!--       geom_point(shape = 19, size = 2, aes(colour = intrin_mot)) + -->
+<!--       scale_color_gradient(low="white", high="#2F3C4D")+ -->
+<!--       geom_smooth(colour = "#2F3C4D", fill = "#2F3C4D", method = 'lm') + -->
+<!--       labs( -->
+<!--         x = "Plezier en interesse", -->
+<!--         y = "Flow", -->
+<!--         caption = "Bron: Dodentochtstudie, Universiteit Gent", -->
+<!--         colour=' ' -->
+<!--       )+geom_text(data = labels, aes(x = x, y = y, -->
+<!--                                      label = label), parse = TRUE)+ -->
+<!--       theme_classic()+ -->
+<!--       theme(plot.caption = element_text(color = "black", size = 12),text=element_text(size=18,  family="PT Sans Narrow"),legend.position="bottom") -->
+
+
+
+<!-- ``` -->
+
+<!-- <div class = "blue"> -->
+<!-- **Bevinding:** Hoe meer wandelaars deelnamen omdat ze het boeiend en leuk vonden om deel te nemen aan de Dodentocht, hoe meer 'flow' ze achteraf aangaven te hebben ervaren. -->
+<!-- </div> -->
+<!-- </div> -->
+<!-- <div class = "col-md-12"> -->
+<!-- <br><br> -->
+
+<!-- **2. Een waardevolle en leerrijke wandeling** -->
+<!-- ```{r echo=FALSE, message=FALSE, warning=FALSE, fig.align="center", fig.height=6} -->
+
+<!--     corr_eqn <- function(x,y, digits = 2) { -->
+<!--       corr_coef <- round(cor(x, y, use="complete.obs"), digits = digits) -->
+<!--       paste("italic(r) == ", corr_coef) -->
+<!--     } -->
+
+<!--     # Provide a scatter plot for income and health deprivation -->
+<!--     data$ident_mot <- (data$ident_app_mot + data$ident_avoi_mot)/2 -->
+<!--     dataintrinmot <- data -->
+<!--     dataintrinmot <- dataintrinmot[-c(which(dataintrinmot$post_fantastisc > 5)), ] -->
+
+
+
+<!--     outlierKD <- function(dt, var) { -->
+<!--       var_name <- eval(substitute(var),eval(dt)) -->
+<!--       tot <- sum(!is.na(var_name)) -->
+<!--       na1 <- sum(is.na(var_name)) -->
+<!--       m1 <- mean(var_name, na.rm = T) -->
+
+<!--       outlier <- boxplot.stats(var_name)$out -->
+<!--       mo <- mean(outlier) -->
+<!--       var_name <- ifelse(var_name %in% outlier, NA, var_name) -->
+
+
+<!--       na2 <- sum(is.na(var_name)) -->
+<!--       m2 <- mean(var_name, na.rm = T) -->
+
+<!--       dt[as.character(substitute(var))] <- invisible(var_name) -->
+<!--       assign(as.character(as.list(match.call())$dt), dt, envir = .GlobalEnv) -->
+<!--       message("Outliers successfully removed", "\n") -->
+<!--       return(invisible(dt)) -->
+
+<!--     } -->
+
+<!--     outlierKD(dataintrinmot, ident_mot) -->
+
+<!--     labels = data.frame(x = 3, y = 1.5, label = corr_eqn(dataintrinmot$ident_mot, dataintrinmot$post_fantastisc)) -->
+
+<!--     ggplot(dataintrinmot, aes(x = ident_mot, y = post_fantastisc)) + -->
+<!--       geom_point(shape = 19, size = 2, aes(colour = ident_mot)) + -->
+<!--       scale_color_gradient(low="white", high="#2F3C4D")+ -->
+<!--       geom_smooth(colour = "#2F3C4D", fill = "#2F3C4D", method = 'lm') + -->
+<!--       labs( -->
+<!--         x = "Zinvolheid en nut", -->
+<!--         y = "Waardevol en leerrijk", -->
+<!--         caption = "Bron: Dodentochtstudie, Universiteit Gent", -->
+<!--         colour=' ' -->
+<!--       )+geom_text(data = labels, aes(x = x, y = y, -->
+<!--                                      label = label), parse = TRUE)+ -->
+<!--       theme_classic()+ -->
+<!--       theme(plot.caption = element_text(color = "black", size = 12),text=element_text(size=18,  family="PT Sans Narrow"),legend.position="bottom") -->
+
+
+
+<!-- ``` -->
+
+<!-- <div class = "blue"> -->
+<!-- **Bevinding:** Hoe meer wandelaars deelnamen omdat ze hun deelname zinvol en persoonlijk belangrijk vonden, hoe meer ze hun deelname achteraf als waardevol, fantastisch en leerrijk zagen. -->
+<!-- </div>. -->
+<!-- </div> -->
+<!-- <div class = "col-md-12"> -->
+<!-- <br><br> -->
+
+<!-- **3. Nervositeit voor de tocht** -->
+<!-- ```{r echo=FALSE, message=FALSE, warning=FALSE, fig.align="center", fig.height=6} -->
+
+<!--     corr_eqn <- function(x,y, digits = 2) { -->
+<!--       corr_coef <- round(cor(x, y, use="na.or.complete"), digits = digits) -->
+<!--       paste("italic(r) == ", corr_coef) -->
+<!--     } -->
+
+<!--     # Provide a scatter plot for income and health deprivation -->
+<!--     data$introj_mot <- (data$introj_app_mot + data$introj_avoi_mot)/2 -->
+<!--     dataintrinmot <- data -->
+
+
+<!--     outlierKD <- function(dt, var) { -->
+<!--       var_name <- eval(substitute(var),eval(dt)) -->
+<!--       tot <- sum(!is.na(var_name)) -->
+<!--       na1 <- sum(is.na(var_name)) -->
+<!--       m1 <- mean(var_name, na.rm = T) -->
+
+<!--       outlier <- boxplot.stats(var_name)$out -->
+<!--       mo <- mean(outlier) -->
+<!--       var_name <- ifelse(var_name %in% outlier, NA, var_name) -->
+
+
+<!--       na2 <- sum(is.na(var_name)) -->
+<!--       m2 <- mean(var_name, na.rm = T) -->
+
+<!--       dt[as.character(substitute(var))] <- invisible(var_name) -->
+<!--       assign(as.character(as.list(match.call())$dt), dt, envir = .GlobalEnv) -->
+<!--       message("Outliers successfully removed", "\n") -->
+<!--       return(invisible(dt)) -->
+
+<!--     } -->
+
+<!--     outlierKD(dataintrinmot, introj_mot) -->
+
+<!--     labels = data.frame(x = 1.5, y = 1.5, label = corr_eqn(dataintrinmot$introj_mot, dataintrinmot$nervous)) -->
+
+<!--     ggplot(dataintrinmot, aes(x = introj_mot, y = nervous)) + -->
+<!--       geom_point(shape = 19, size = 2, aes(colour = introj_mot)) + -->
+<!--       scale_color_gradient(low="white", high="#2F3C4D")+ -->
+<!--       geom_smooth(colour = "#2F3C4D", fill = "#2F3C4D", method = 'lm') + -->
+<!--       labs( -->
+<!--         x = "Plicht", -->
+<!--         y = "Nervositeit", -->
+<!--         caption = "Bron: Dodentochtstudie, Universiteit Gent", -->
+<!--         colour=' ' -->
+<!--       )+geom_text(data = labels, aes(x = x, y = y, -->
+<!--                                      label = label), parse = TRUE)+ -->
+<!--       theme_classic()+ -->
+<!--       theme(plot.caption = element_text(color = "black", size = 12),text=element_text(size=18,  family="PT Sans Narrow"),legend.position="bottom") -->
+
+
+
+<!--     ``` -->
+
+<!-- <div class = "blue"> -->
+<!-- **Bevinding:** Hoe meer wandelaars deelnamen omdat ze het als hun plicht zagen om deel te nemen, hoe meer ze rapporteerden nerveus te zijn voor hun deelname. -->
+<!-- </div>. -->
+<!-- </div> -->
+<!-- <div class = "col-md-12"> -->
+<!-- <br><br> -->
+
+<!-- **4. Ervaren pijn tijdens de tocht** -->
+<!-- ```{r echo=FALSE, message=FALSE, warning=FALSE, fig.align="center",fig.height=6} -->
+
+<!--     corr_eqn <- function(x,y, digits = 2) { -->
+<!--       corr_coef <- round(cor(x, y, use="complete.obs"), digits = digits) -->
+<!--       paste("italic(r) == ", corr_coef) -->
+<!--     } -->
+
+<!--     # Provide a scatter plot for income and health deprivation -->
+<!--     data$extern_mot <- (data$ext_app_mot + data$ext_avoi_mot)/2 -->
+<!--     dataintrinmot <- data -->
+<!--     dataintrinmot <- dataintrinmot[-c(which(dataintrinmot$post_physicalpain < 1)), ] -->
+
+
+
+<!--     outlierKD <- function(dt, var) { -->
+<!--       var_name <- eval(substitute(var),eval(dt)) -->
+<!--       tot <- sum(!is.na(var_name)) -->
+<!--       na1 <- sum(is.na(var_name)) -->
+<!--       m1 <- mean(var_name, na.rm = T) -->
+
+<!--       outlier <- boxplot.stats(var_name)$out -->
+<!--       mo <- mean(outlier) -->
+<!--       var_name <- ifelse(var_name %in% outlier, NA, var_name) -->
+
+
+<!--       na2 <- sum(is.na(var_name)) -->
+<!--       m2 <- mean(var_name, na.rm = T) -->
+
+<!--       dt[as.character(substitute(var))] <- invisible(var_name) -->
+<!--       assign(as.character(as.list(match.call())$dt), dt, envir = .GlobalEnv) -->
+<!--       message("Outliers successfully removed", "\n") -->
+<!--       return(invisible(dt)) -->
+
+<!--     } -->
+
+<!--     outlierKD(dataintrinmot, extern_mot) -->
+
+<!--     labels = data.frame(x = 1, y = 1.5, label = corr_eqn(dataintrinmot$extern_mot, dataintrinmot$post_physicalpain)) -->
+
+<!--     ggplot(dataintrinmot, aes(x = extern_mot, y = post_physicalpain)) + -->
+<!--       geom_point(shape = 19, size = 2, aes(colour = extern_mot)) + -->
+<!--       scale_color_gradient(low="white", high="#2F3C4D")+ -->
+<!--       geom_smooth(colour = "#2F3C4D", fill = "#2F3C4D", method = 'lm') + -->
+<!--       labs( -->
+<!--         x = "De ander", -->
+<!--         y = "Fysieke pijn", -->
+<!--         caption = "Bron: Dodentochtstudie, Universiteit Gent", -->
+<!--         colour=' ' -->
+<!--       )+geom_text(data = labels, aes(x = x, y = y, -->
+<!--                                      label = label), parse = TRUE)+ -->
+<!--       theme_classic()+ -->
+<!--       theme(plot.caption = element_text(color = "black", size = 12), text=element_text(size=18,  family="PT Sans Narrow"),legend.position="bottom") -->
+
+
+
+<!--     ``` -->
+
+<!-- <div class = "blue"> -->
+<!-- **Bevinding:** Hoe meer wandelaars deelnamen omdat ze zich dienden te bewijzen tegenover anderen, hoe meer pijn en fysieke last ze achteraf aangaven te hebben ervaren. -->
+<!-- </div>. -->
+<!-- </div> -->
+<!-- </div>  -->
 
 <br><br>
 
@@ -562,7 +673,7 @@ Hieronder vindt u vier bevindingen die enkele relaties blootleggen tussen de soo
 
 Naast de eerste resultaten die we hierboven bondig omschreven, liggen er nog vele plannen op tafel voor **de toekomst**. We stellen ze graag aan u voor:
 
-  - Ten eerste willen we in kaart brengen wat **_de functie is van jouw type motivatie_**. Zorgt het ene type motivatie voor een andere beleving? Heb je meer kans om aan te komen indien je anders gemotiveerd bent?
+  - Ten eerste willen we in kaart brengen wat **_de functie is van jouw type motivatie_**. Wie haalt de eindmeet? Hangt dit samen met het motivationeel profiel van de wandelaar?  
 
   - Ten tweede organiseren we op **_donderdag 5 maart 2020 om 20u_** een **_infoavond_** waarin de organisatie en het onderzoeksteam het verloop, de resultaten en de toekomstplannen van deze studie zullen presenteren en bespreken. Inschrijven voor deze avond kan via volgende link: **[Schrijf je hier in](https://webappsx.ugent.be/eventManager/events/dodentochtstudie)**. Let op, plaatsen zijn beperkt.
 
