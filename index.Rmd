@@ -164,18 +164,33 @@ In de eerste vragenlijst, die een week voor de Dodentocht werd ingevuld, vroegen
 <div class = "row">
 <div class = "col-md-4">
 <br><br>
-**Doelen 1**
-![Caption for the picture.](logo_ugent_dodentocht.png)
+<center>
+**Doel 1:  **  
+**"de eindmeet"**  
+</center>
+![](finishdoto.jpg)
+<br><br>
+*"Mijn doel is om de 100 km uit te stappen en de finish in Bornem te bereiken."*
 </div>
 <div class = "col-md-4">
 <br><br>
-**Doelen 1**
-![Caption for the picture.](logo_ugent_dodentocht.png)
+<center>
+**Doel 2:  **  
+**"mijn fysieke en mentale grens"**
+</center>
+![](challengedoto.jpg)
+<br><br>
+*"Ik wil mezelf zowel mentaal als fysiek uitdagen en mijn grenzen verleggen."*
 </div>
 <div class = "col-md-4">
 <br><br>
-**Doelen 1**
-![Caption for the picture.](logo_ugent_dodentocht.png)
+<center>
+**Doel 3:  **  
+**"een familiaal of sociaal doel"**
+</center>
+![](charitydoto.jpg)
+<br><br>
+*"Ik wandel om een goed doel te steunen, dit omdat we in onze familie iemand verloren hebben."*
 </div>
 </div> 
 <br><br>
@@ -381,10 +396,10 @@ Wanneer wandelaars aangaven dat ze hun doelen nastreefden omdat ze het zien als 
 <div class = "blue">
 **Bevinding:**  
 
-Wandelaars die aangaven ze hun doelen nastreefden omdat ze het boeiend en leuk vinden om dat te doen gaven meer aan **_'flow'_** te hebben ervaern tijdens de tocht. Ze gingen helemaal op in het wandelen.  
+Wandelaars die aangaven ze hun doelen nastreefden omdat ze het boeiend en leuk vinden om dat te doen gaven meer aan **_'flow'_** te hebben ervaren tijdens de tocht. Ze gingen helemaal op in het wandelen.  
 (*r = .31*)  
 
-Wandelaars die aangaven hun doelen na te streven omdat anderen dit van hen verwachtten rapporeerten meer **_pijn_** tijdens de tocht.  
+Wandelaars die aangaven hun doelen na te streven omdat anderen dit van hen verwachtten rapporteerden meer **_pijn_** tijdens de tocht.  
 (*r = .16*)   
 </div>
 
@@ -398,7 +413,7 @@ Wandelaars die aangaven hun doelen na te streven omdat anderen dit van hen verwa
 <div class = "blue">
 **Bevinding:**  
 
-Wandelaars die op voorhand aangaven hun doelen na te streefdenen omdat ze dit persoonlijk zinvol vonden, ervoeren de Dodentocht achteraf **_positiever_**. Ze gaven aan dat het een boeiende, leerrijke en waardevolle tocht was.  
+Wandelaars die op voorhand aangaven hun doelen na te streefden omdat ze dit persoonlijk zinvol vonden, ervoeren de Dodentocht achteraf **_positiever_**. Ze gaven aan dat het een boeiende, leerrijke en waardevolle tocht was.  
 (*r = .32*)  
 
 Wandelaars die op voorhand aangaven niet te weten waarom ze hun doelen nastreefden gaven aan minder geneigd te zijn zich in te schrijven voor de **_Dodentocht 2020_**.  
