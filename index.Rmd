@@ -101,9 +101,9 @@ geom_area(aes(fill = Geslacht), color = "white",
               stat ="bin", bins = 30) +
   labs(
     x = "Leeftijd",
-    y = "Hoeveelheid deelnemers",
+    y = "Aantal deelnemers",
     title = "Leeftijd van deelnemers per geslacht",
-    subtitle = "Aantal = 1383",
+    subtitle = "Totale aantal = 1383 (10.91% van alle wandelaars)",
     caption = "Bron: Dodentochtstudie, Universiteit Gent"
   )+
   theme_classic()+
@@ -368,7 +368,7 @@ Deze worden hieronder bondig omschreven, voorafgegaan door een grafiek die aanto
 
 ## Waarmee hangt motivatie samen?
 
-Hieronder vindt u enkele bevindingen over de relatie tussen de soort motivatie om je doelen na te streven en enkele metingen die voor, tijdens en na de Dodentocht zijn afgenomen.
+Hieronder vindt u enkele bevindingen over de relatie tussen de type motivatie om je doelen na te streven en enkele metingen die voor, tijdens en na de Dodentocht zijn afgenomen.
 <br><br>
 <div class = "row">
 <div class = "col-md-4">
@@ -699,7 +699,7 @@ Naast de eerste resultaten die we hierboven bondig omschreven, liggen er nog vel
 # 4. Meer informatie
 ***
 Heb je vragen? Wil je meer te weten komen over een bevinding die je hierboven zag?  
-Contacteer ons gerust via onderstaande contactgegevens of bezoek onze onderzoekspagina via de website <a href="https://www.ugent.be/epg/nl/onderzoek/dodentocht-nl" target="_blank">www.ugent.be/dodentocht</a>
+Contacteer ons gerust via onderstaande contactgegevens of bezoek onze onderzoekspagina via de website <a href="https://www.ugent.be/epg/nl/onderzoek/dodentocht-nl" target="_blank">www.ugent.be/dodentocht</a>.
 
 <br><br>
 <br><br>
