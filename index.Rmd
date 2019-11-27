@@ -50,7 +50,7 @@ library(circlize)
 library(plotrix)
 ```
 
-> "De grootheid van een mens is niet te meten aan zijn verwezelijkingen, maar aan zijn aspiraties..."  
+> "De grootheid van een mens is niet te meten aan zijn verwezenlijkingen, maar aan zijn aspiraties..."  
 - *Een wandelaar na zijn opgave in 1981*.
 
 
@@ -64,7 +64,7 @@ Via deze webpagina wensen we u op de hoogte te brengen van alle (eerste) resulta
   2. Hoe waren ze gemotiveerd om deel te nemen aan de Dodentocht?
   3. Wat mag u nog verwachten?
 
-Meer informatie over de studie kan u steeds terugvinden op [de onderzoekspagina](www.ugent.be/dodentocht)
+Meer informatie over de studie kan u steeds terugvinden op <a href="https://www.ugent.be/epg/nl/onderzoek/dodentocht-nl" target="_blank">de onderzoekspagina</a>
 
 <br><br>
 
@@ -103,7 +103,7 @@ geom_area(aes(fill = Geslacht), color = "white",
     x = "Leeftijd",
     y = "Hoeveelheid deelnemers",
     title = "Leeftijd van deelnemers per geslacht",
-    subtitle = "N = 1383",
+    subtitle = "Aantal = 1383",
     caption = "Bron: Dodentochtstudie, Universiteit Gent"
   )+
   theme_classic()+
@@ -120,11 +120,11 @@ Gemiddeld hadden deelnemers een leeftijd van **43.4** jaar, gaande van 18 tot 77
 
 value <- c("100 %",  "98.3 %",  "87.9 %",   "83.8 %",  "82.4 %")
 hoeveelheid <- as.numeric(c( 1383,   1360,    1215,     1159,   1139      ))
-post <- c('Start','Post 1, 27.3 km',  'Post 2, 53.7 km','Post 3, 72 km','Post 4, 89.9 km')
+post <- c('Start','27.3 km',  '53.7 km','72 km','89.9 km')
 table <- cbind(value, hoeveelheid, post)
 table <- as.data.frame(table)
 table$value <- as.character(table$value)
-table$post <- factor(table$post, levels=c('Start','Post 1, 27.3 km','Post 2, 53.7 km','Post 3, 72 km','Post 4, 89.9 km'))
+table$post <- factor(table$post, levels=c('Start','27.3 km',  '53.7 km','72 km','89.9 km'))
 
 ggplot(table) +
   geom_bar(
@@ -149,7 +149,7 @@ ggplot(table) +
 ```
 
 Bovenstaande grafiek laat u het aantal wandelaars zien dat deelnam aan het onderzoek tijdens de Dodentocht 2019.  
-Na de Dodentocht wisten nog 875 wandelaars de vragenlijst in te vullen over hun ervaring en belevingen van hun Dodentocht
+Na de Dodentocht wisten nog 875 wandelaars de vragenlijst in te vullen over hun ervaring en belevingen van hun Dodentocht.
 </div> 
 </div> 
 
@@ -190,7 +190,7 @@ In de eerste vragenlijst, die een week voor de Dodentocht werd ingevuld, vroegen
 </center>
 ![](charitydoto.jpg)
 <br><br>
-*"Ik wandel om een goed doel te steunen, dit omdat we in onze familie iemand verloren hebben."*
+*"Ik wandel om een goed doel te steunen, dit omdat we in onze familie iemand verloren zijn"*
 </div>
 </div> 
 <br><br>
@@ -199,7 +199,7 @@ In de eerste vragenlijst, die een week voor de Dodentocht werd ingevuld, vroegen
 ## Types motivatie voor deelname
 
 In deze eerste vragenlijst werden **vijf types motivatie** gemeten.  
-Deze worden hieronder bondig omschreven, voorafgegaan door een grafiek die aantoont *hoeveel mensen (verticale as) een bepaalde score op dit motivatietype behaalde (horizontale as)*:
+Deze worden hieronder bondig omschreven, voorafgegaan door een grafiek die aantoont *hoeveel mensen (verticale as) een bepaalde score op dit motivatietype (horizontale as) behaalde*:
 <br><br>
 <center>
 *"Ik ben gemotiveerd om mijn opgestelde doelen na te streven..."*
@@ -359,7 +359,7 @@ Deze worden hieronder bondig omschreven, voorafgegaan door een grafiek die aanto
 
   - Een vergelijking tussen de vier bovenstaande grafieken laat zien dat vele wandelaars het nastreven van hun opgestelde doelen **_plezierig_** vinden en omdat ze dit waardevol en **_zinvol_** vinden.   
   
-  - Minder zien wandelaars het nastreven van hun doelen als een **_persoonlijke plicht_**. Nog minder streven wandelaars hun doelen na om het door **_anderen_** wordt verwacht of weten ze eigenlijk helemaal niet waarom ze dit doel nastreven.  
+  - Minder zien wandelaars het nastreven van hun doelen als een **_persoonlijke plicht_**. Nog minder streven wandelaars hun doelen na omdat het door **_anderen_** wordt verwacht of weten ze eigenlijk helemaal niet waarom ze dit doel nastreven.  
   Wel is het opvallend om te zien dat deze gemiddelden schommelen rond de 2-3/5, terwijl het doelen zijn die wandelaars zelf kozen voorafgaand de Dodentocht.  
 
 </div>
@@ -380,12 +380,12 @@ Hieronder vindt u enkele bevindingen over de relatie tussen de soort motivatie o
 <div class = "blue">
 **Bevinding:**  
 
-Wanneer wandelaars aangaven dat ze hun doelen nastreefden omdat ze het zien als een persoonlijke plicht bleek samen te hangen met hoe **_nerveus_** ze waren voor de tocht.  
+Wandelaars die aangaven dat ze hun doelen nastreefden omdat ze het zien als een **_persoonlijke plicht_** waren **_nerveuzer_** voor de tocht.  
 (*r = .28*)* 
 </div>
     
     
-  $*$ *r* verwijst naar de correlatie of samenhang tussen de twee metingen [(klik hier voor meer informatie)](https://mod-est.tbm.tudelft.nl/wiki/index.php/Correlatie).
+  $*$ *r* verwijst naar de correlatie of samenhang tussen de twee metingen <a href="(https://mod-est.tbm.tudelft.nl/wiki/index.php/Correlatie)" target="_blank">(klik hier voor meer informatie)</a>
 </div>
 <div class = "col-md-4">
 <center>
@@ -396,10 +396,10 @@ Wanneer wandelaars aangaven dat ze hun doelen nastreefden omdat ze het zien als 
 <div class = "blue">
 **Bevinding:**  
 
-Wandelaars die aangaven ze hun doelen nastreefden omdat ze het boeiend en leuk vinden om dat te doen gaven meer aan **_'flow'_** te hebben ervaren tijdens de tocht. Ze gingen helemaal op in het wandelen.  
+Wandelaars die aangaven dat ze hun doelen nastreefden omdat ze het **_boeiend en leuk_** vinden om dat te doen, gingen meer op in het wandelen. Ze gaven aan meer **_'flow'_** te hebben ervaren tijdens de tocht.   
 (*r = .31*)  
 
-Wandelaars die aangaven hun doelen na te streven omdat anderen dit van hen verwachtten rapporteerden meer **_pijn_** tijdens de tocht.  
+Wandelaars die aangaven hun doelen na te streven omdat **_anderen_** dit van hen verwachtten, rapporteerden meer **_pijn_** tijdens de tocht.  
 (*r = .16*)   
 </div>
 
@@ -413,10 +413,10 @@ Wandelaars die aangaven hun doelen na te streven omdat anderen dit van hen verwa
 <div class = "blue">
 **Bevinding:**  
 
-Wandelaars die op voorhand aangaven hun doelen na te streefden omdat ze dit persoonlijk zinvol vonden, ervoeren de Dodentocht achteraf **_positiever_**. Ze gaven aan dat het een boeiende, leerrijke en waardevolle tocht was.  
+Wandelaars die op voorhand aangaven hun doelen na te streven omdat ze dit **_persoonlijk zinvol_** vonden, ervoeren de Dodentocht achteraf **_positiever_**. Ze gaven aan dat het een boeiende, leerrijke en waardevolle tocht was.  
 (*r = .32*)  
 
-Wandelaars die op voorhand aangaven niet te weten waarom ze hun doelen nastreefden gaven aan minder geneigd te zijn zich in te schrijven voor de **_Dodentocht 2020_**.  
+Wandelaars die op voorhand aangaven **_niet te weten waarom_** ze hun doelen nastreefden, gaven aan minder geneigd te zijn zich in te schrijven voor de **_Dodentocht 2020_**.  
 (*r = -.13*)   
   
 </div>
@@ -690,7 +690,7 @@ Naast de eerste resultaten die we hierboven bondig omschreven, liggen er nog vel
 
   - Ten eerste willen we in kaart brengen wat **_de functie is van jouw type motivatie_**. Wie haalt de eindmeet? Hangt dit samen met het motivationeel profiel van de wandelaar?  
 
-  - Ten tweede organiseren we op **_donderdag 5 maart 2020 om 20u_** een **_infoavond_** waarin de organisatie en het onderzoeksteam het verloop, de resultaten en de toekomstplannen van deze studie zullen presenteren en bespreken. Inschrijven voor deze avond kan via volgende link: **[Schrijf je hier in](https://webappsx.ugent.be/eventManager/events/dodentochtstudie)**. Let op, plaatsen zijn beperkt.
+  - Ten tweede organiseren we op **_donderdag 5 maart 2020 om 20u_** een **_infoavond_** in Gent waarin de organisatie en het onderzoeksteam het verloop, de resultaten en de toekomstplannen van deze studie zullen presenteren en bespreken. Inschrijven voor deze avond kan via volgende link: **<a href="https://webappsx.ugent.be/eventManager/events/dodentochtstudie" target="_blank">Schrijf je hier in</a>**. Let op, plaatsen zijn beperkt.
 
 <br><br>
 <br><br>
@@ -699,7 +699,7 @@ Naast de eerste resultaten die we hierboven bondig omschreven, liggen er nog vel
 # 4. Meer informatie
 ***
 Heb je vragen? Wil je meer te weten komen over een bevinding die je hierboven zag?  
-Contacteer ons gerust via onderstaande contactgegevens of bezoek onze onderzoekspagina via de website [www.ugent.be/dodentocht](www.ugent.be/dodentocht)
+Contacteer ons gerust via onderstaande contactgegevens of bezoek onze onderzoekspagina via de website <a href="https://www.ugent.be/epg/nl/onderzoek/dodentocht-nl" target="_blank">www.ugent.be/dodentocht</a>
 
 <br><br>
 <br><br>
