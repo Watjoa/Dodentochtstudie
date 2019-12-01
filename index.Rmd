@@ -385,7 +385,7 @@ Wandelaars die aangaven dat ze hun doelen nastreefden omdat ze het zien als een 
 </div>
     
     
-  $*$ *r* verwijst naar de correlatie of samenhang tussen de twee metingen <a href="(https://mod-est.tbm.tudelft.nl/wiki/index.php/Correlatie)" target="_blank">(klik hier voor meer informatie)</a>
+  $*$ *r* verwijst naar de correlatie of samenhang tussen de twee metingen <a href="https://mod-est.tbm.tudelft.nl/wiki/index.php/Correlatie" target="_blank">(klik hier voor meer informatie)</a>
 </div>
 <div class = "col-md-4">
 <center>
